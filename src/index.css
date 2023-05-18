@@ -1,17 +1,195 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ 
+    font-family: 'Inter', sans-serif;    
+  }
+
+  /* yellow bullet */
+  input[type='radio']#yellow:after {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    border-radius: 30px;
+    background-color: yellow;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input[type='radio']#yellow:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: yellow;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+  /* red bullet */
+  input[type='radio']#red:after {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    border-radius: 30px;
+    background-color: red;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']#red:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: red;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+  /* pink bullet */
+  input[type='radio']#pink:after {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    border-radius: 30px;
+    background-color: pink;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']#pink:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: pink;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+  /* blue bullet */
+  input[type='radio']#blue:after {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    border-radius: 30px;
+    background-color: blue;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']#blue:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: blue;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+  /* green bullet */
+  input[type='radio']#green:after {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -4px;
+    left: -3px;
+    border-radius: 30px;
+    background-color: green;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']#green:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: green;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+ /* green bullet */
+ input[type='radio']#brown:after {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -4px;
+  left: -3px;
+  border-radius: 30px;
+  background-color: brown;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']#brown:checked:after {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: brown;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+ /* green bullet */
+ input[type='radio']#purple:after {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -4px;
+  left: -3px;
+  border-radius: 30px;
+  background-color: purple;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']#purple:checked:after {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: purple;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
 }
