@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import colorData from '../data/colorsdata.js'
+import colorData from "../data/colorsdata.js";
 import { MdErrorOutline, MdArrowBack } from "react-icons/md";
 import ReactSelect from "react-select";
 import { Link } from "react-router-dom";
-import { useForm, Controller} from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { occupationRender } from "../components/OccupationRender.jsx";
 
 import Fhead from "../assets/f-head.png";
@@ -19,6 +19,8 @@ const maxSteps = 3;
 
 const FormPage = () => {
   const [formPart, setFormPart] = useState(0);
+  const [dob, setDob] = useState("");
+
   const {
     watch,
     register,
@@ -26,7 +28,6 @@ const FormPage = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
-
 
   const completedFormPart = () => {
     setFormPart((part) => part + 1);
@@ -37,19 +38,13 @@ const FormPage = () => {
       return undefined;
     } else if (formPart === 2) {
       return (
-        <button
-          disabled={!isValid}
-          className="bg-blue-400 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 disabled:cursor-not-allowed"
-        >
+        <button className="bg-blue-400 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 disabled:cursor-not-allowed">
           View Your Character
         </button>
       );
     } else {
       return (
-        <button
-          disabled={!isValid}
-          className="bg-blue-400 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 disabled:cursor-not-allowed"
-        >
+        <button className="bg-blue-400 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 disabled:cursor-not-allowed">
           Next
         </button>
       );
@@ -95,10 +90,16 @@ const FormPage = () => {
     }
   };
 
-
-
-  
-
+  const dateValidation = () => {
+    var dates = new Date();
+    var dobs = new Date(watch().dob);
+    var age = dates.getFullYear() - dobs.getFullYear();
+    var months = dates.getMonth() - dobs.getMonth();
+    if (months < 0 || (months === 0 && dates.getDate() < dobs.getDate())) {
+      age--;
+    }
+    return age > 18;
+  };
 
   return (
     <div className="section pt-5">
@@ -228,8 +229,13 @@ const FormPage = () => {
                             },
                           })}
                         />
-                        {errors.gender && <p>{errors.gender.message}</p>}
                       </div>
+                      {errors.gender && (
+                        <p className="flex items-center gap-1 text-sm text-red-600">
+                          <MdErrorOutline />
+                          {errors.gender.message}
+                        </p>
+                      )}
                     </div>
                   </section>
                 )}
@@ -245,20 +251,24 @@ const FormPage = () => {
                         Date of Birth
                       </label>
                       <input
-                        placeholder="Enter date of Birth"
+                        {...register("dob", {
+                          required: true,
+                          validate: dateValidation,
+                        })}
                         type="date"
                         id="dob"
-                        className="border p-2 rounded w-full"
-                        {...register("dob", {
-                          required: {
-                            value: true,
-                            message: "Please enter date of birth",
-                          },
-                        })}
+                        className="form-control border p-2 rounded w-full"
                       />
-                      {errors.dob && (
+                      {errors?.dob?.type === "required" && (
                         <p className="flex items-center gap-1 text-sm text-red-600">
-                          <MdErrorOutline /> {errors.dob.message}
+                          <MdErrorOutline />
+                          Please enter your date of birth
+                        </p>
+                      )}
+                      {errors?.dob?.type === "validate" && (
+                        <p className="flex items-center gap-1 text-sm text-red-600">
+                          <MdErrorOutline />
+                          You need to be 19 years or older
                         </p>
                       )}
                     </div>
@@ -270,7 +280,7 @@ const FormPage = () => {
                       <Controller
                         name="occupation"
                         control={control}
-                        rules={{ required: true }}
+                        rules={{ required: "Please choose an occupation" }}
                         render={({ field }) => (
                           <ReactSelect
                             isClearable
@@ -287,7 +297,12 @@ const FormPage = () => {
                           />
                         )}
                       />
-                      {errors.occupation && <p>{errors.occupation.message}</p>}
+                      {errors.occupation && (
+                        <p className="flex items-center gap-1 text-sm text-red-600">
+                          <MdErrorOutline />
+                          {errors.occupation.message}
+                        </p>
+                      )}
                     </div>
                   </section>
                 )}
@@ -299,27 +314,32 @@ const FormPage = () => {
                     </h2>
 
                     <div className="pb-6 ">
-<div className="grid grid-cols-5 gap-4">
-{colorData.map((inputdata, key) => 
-  <label htmlFor={inputdata.labeslname}>
-  
-                       <Inputs type ={inputdata.typesdata}
-                       id = {inputdata.ids}
-                       value = {inputdata.valuesdata}
-                       className="" 
-                        register = {register}
-                        validation = {{
-                          required: {
-                            value: true, 
-                            message: `{inputdata.msg}`,
-                          }
-                        }}
-                       />
- {errors.color && <p>{errors.color.message}</p>}
-                      </label>)}
-</div>
+                      <div className="grid grid-cols-5 gap-4">
+                        {colorData.map((inputdata, key) => (
+                          <label htmlFor={inputdata.labeslname}>
+                            <Inputs
+                              type={inputdata.typesdata}
+                              id={inputdata.ids}
+                              value={inputdata.valuesdata}
+                              className=""
+                              register={register}
+                              validation={{
+                                required: {
+                                  value: true,
+                                  message: "Please select colour",
+                                },
+                              }}
+                            />
+                          </label>
+                        ))}
+                      </div>
 
-
+                      {errors.color && (
+                        <p className="flex items-center gap-1 text-sm text-red-600 pt-8">
+                          <MdErrorOutline />
+                          {errors.color.message}
+                        </p>
+                      )}
                     </div>
                   </section>
                 )}
@@ -331,13 +351,16 @@ const FormPage = () => {
                     <div className="flex flex-col items-center justify-center relative h-[80vh] md:h-[120vh]">
                       <div>{imageRender()}</div>
 
-                      <div>
-                    {occupationRender(watch)}
-                      </div>
-                     <Pants colour={watch().color} />
+                      <div>{occupationRender(watch)}</div>
+                      <Pants colour={watch().color} />
                     </div>
 
-                  <Results fullname={watch().fullname} surname ={watch().surname} age={ageRender()} occupation = {watch().occupation.label}/>
+                    <Results
+                      fullname={watch().fullname}
+                      surname={watch().surname}
+                      age={ageRender()}
+                      occupation={watch().occupation.label}
+                    />
                   </section>
                 )}
                 {btnRender()}
