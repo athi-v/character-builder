@@ -26,7 +26,7 @@ function Home() {
 </div>
 
 <div>
-<h1 className='font-bold  text-transparent text-7xl lg:text-8xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Builder.abc</h1>
+<h1 className='font-bold  text-transparent text-7xl lg:text-8xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Builder</h1>
 </div>
 
 <div className='flex gap-4'>
