@@ -130,15 +130,15 @@ const FormPage = () => {
           <div className="mx-auto w-full lg:max-w-[50%] shadow-xl">
             <div className="px-5 py-10">
               <form onSubmit={handleSubmit(submitForm)}>
-                {formPart < maxSteps && (
+                {formPart <= maxSteps  && (
                   <div>
                     {formPart > 0 && (
-                      <button onClick={prevStep} type="button">
-                        <MdArrowBack />
+                      <button onClick={prevStep} type="button" className="flex items-center gap-2 bg-blue-400 rounded p-1 text-white">
+                        <p><MdArrowBack /></p> <p>Back</p>
                       </button>
                     )}
 
-                    <p>
+                    <p className={formPart === 3 && 'hidden'}>
                       {formPart + 1} of {maxSteps}
                     </p>
                   </div>

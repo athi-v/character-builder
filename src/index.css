@@ -8,7 +8,16 @@ body {
     font-family: 'Inter', sans-serif;    
   }
 
+
+  input[type='radio']#yellow{
+    -moz-appearance: initial !important;
+  }
+
   /* yellow bullet */
+  input[type='radio']#yellow{
+    -moz-appearance: initial !important;
+  }
+
   input[type='radio']#yellow:after {
     width: 30px;
     height: 30px;
@@ -31,11 +40,15 @@ input[type='radio']#yellow:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 
   /* red bullet */
+  input[type='radio']#red{
+    -moz-appearance: initial !important;
+  }
+
   input[type='radio']#red:after {
     width: 30px;
     height: 30px;
@@ -58,11 +71,15 @@ input[type='radio']#red:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 
   /* pink bullet */
+  input[type='radio']#pink{
+    -moz-appearance: initial !important;
+  }
+
   input[type='radio']#pink:after {
     width: 30px;
     height: 30px;
@@ -85,10 +102,14 @@ input[type='radio']#pink:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
   /* blue bullet */
+  input[type='radio']#blue{
+    -moz-appearance: initial !important;
+  }
+
   input[type='radio']#blue:after {
     width: 30px;
     height: 30px;
@@ -111,11 +132,15 @@ input[type='radio']#blue:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 
   /* green bullet */
+  input[type='radio']#green{
+    -moz-appearance: initial !important;
+  }
+
   input[type='radio']#green:after {
     width: 30px;
     height: 30px;
@@ -138,11 +163,15 @@ input[type='radio']#green:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 
  /* green bullet */
+ input[type='radio']#brown{
+  -moz-appearance: initial !important;
+}
+
  input[type='radio']#brown:after {
   width: 30px;
   height: 30px;
@@ -157,6 +186,7 @@ input[type='radio']#green:checked:after {
   border: 2px solid white;
 }
 
+
 input[type='radio']#brown:checked:after {
   width: 30px;
   height: 30px;
@@ -165,10 +195,13 @@ input[type='radio']#brown:checked:after {
   content: '';
   display: inline-block;
   visibility: visible;
-  border: 2px solid white;
+  border: 2px solid black;
 }
 
  /* green bullet */
+ input[type='radio']#purple{
+  -moz-appearance: initial !important;
+}
  input[type='radio']#purple:after {
   width: 30px;
   height: 30px;
@@ -191,5 +224,5 @@ input[type='radio']#purple:checked:after {
   content: '';
   display: inline-block;
   visibility: visible;
-  border: 2px solid white;
+  border: 2px solid black;
 }
